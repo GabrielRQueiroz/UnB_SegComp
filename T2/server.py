@@ -1,17 +1,14 @@
 import socket
 import ssl
 
-# Carregar certificado e chave privada
 cert_file = 'certificado.pem'
 key_file = 'chave_privada.pem'
 
-# Criar um socket TCP/IP
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(('localhost', 8443))
 server_socket.listen(5)
 print("Servidor HTTPS aguardando conexões na porta 8443...")
 
-# Envolver o socket com SSL/TLS
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 context.load_cert_chain(certfile=cert_file, keyfile=key_file)
 
